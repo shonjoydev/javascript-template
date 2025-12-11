@@ -1,0 +1,49 @@
+{
+  "source": {
+    "include": ["src"],
+    "includePattern": ".+\\.js(doc|x)?$",
+    "excludePattern": "(node_modules|docs|tests|__tests__|__mocks__)"
+  },
+  "opts": {
+    "template": "node_modules/better-docs",
+    "destination": "./docs",
+    "recurse": true,
+    "readme": "./README.md",
+    "encoding": "utf8"
+  },
+  "plugins": ["plugins/markdown", "node_modules/better-docs/category"],
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": false,
+    "default": {
+      "outputSourceFiles": true,
+      "includeDate": true
+    },
+    "better-docs": {
+      "name": "JavaScript Template",
+      "title": "JavaScript Documentation",
+      "hideGenerator": true,
+      "theme": "dark",
+      "navigation": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/shonjoydev/javascript-template"
+        },
+        {
+          "label": "npm",
+          "href": "https://npmjs.com/package/your-package"
+        }
+      ],
+      "navLinks": [
+        {
+          "label": "Arrays",
+          "href": "module-arrays.html"
+        },
+        {
+          "label": "Strings",
+          "href": "module-strings.html"
+        }
+      ]
+    }
+  }
+}

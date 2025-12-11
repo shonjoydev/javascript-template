@@ -1,6 +1,7 @@
 import js from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import * as eslintPluginImport from 'eslint-plugin-import';
+import jsdoc from 'eslint-plugin-jsdoc';
 import n from 'eslint-plugin-n';
 import eslintPluginPrettier from 'eslint-plugin-prettier';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
@@ -22,6 +23,7 @@ export default [
   js.configs.recommended,
   eslintConfigPrettier,
   eslintPluginPrettierRecommended,
+  jsdoc.configs['flat/recommended'],
 
   // JavaScript files configuration
   {
@@ -41,6 +43,7 @@ export default [
     plugins: {
       prettier: eslintPluginPrettier,
       import: eslintPluginImport,
+      jsdoc,
       n,
       'unused-imports': unusedImports,
     },
@@ -52,6 +55,13 @@ export default [
         alias: {
           map: [['@', './']],
           extensions: ['.js', '.mjs'],
+        },
+      },
+      jsdoc: {
+        mode: 'typescript',
+        tagNamePreference: {
+          returns: 'returns',
+          return: 'returns',
         },
       },
     },
@@ -81,6 +91,32 @@ export default [
           caughtErrorsIgnorePattern: '^_',
         },
       ],
+
+      // JSDoc rules
+      'jsdoc/require-jsdoc': [
+        'warn',
+        {
+          require: {
+            FunctionDeclaration: true,
+            MethodDefinition: true,
+            ClassDeclaration: true,
+            ArrowFunctionExpression: true,
+            FunctionExpression: true,
+          },
+          contexts: [
+            'VariableDeclaration > VariableDeclarator > ArrowFunctionExpression',
+          ],
+        },
+      ],
+      'jsdoc/require-param': 'warn',
+      'jsdoc/require-param-type': 'warn',
+      'jsdoc/require-returns': 'warn',
+      'jsdoc/require-returns-type': 'warn',
+      'jsdoc/require-description': 'off',
+      'jsdoc/check-param-names': 'error',
+      'jsdoc/check-types': 'error',
+      'jsdoc/valid-types': 'error',
+      'jsdoc/no-undefined-types': 'off',
 
       // Airbnb Style Guide Rules
 

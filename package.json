@@ -32,7 +32,18 @@
     "git:status": "git status -sb",
     "git:log": "git log --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit",
     "prepare": "husky",
-    "validate": "pnpm run lint && pnpm run format:check && pnpm run test"
+    "validate": "pnpm run lint && pnpm run format:check && pnpm run test",
+    "docker:test": "docker-compose up test",
+    "docker:test:watch": "docker-compose up test-watch",
+    "docker:test:coverage": "docker-compose up test-coverage",
+    "docker:docs": "docker-compose up docs",
+    "docker:docs:bg": "docker-compose up -d docs",
+    "docker:down": "docker-compose down",
+    "docker:build": "docker-compose build",
+    "docker:rebuild": "docker-compose down && docker-compose build --no-cache",
+    "docker:clean": "docker-compose down -v --rmi all",
+    "docker:logs": "docker-compose logs -f",
+    "docker:ps": "docker-compose ps"
   },
   "config": {
     "commitizen": {

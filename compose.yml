@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  test:
+    build: .
+    container_name: myapp-test
+    command: pnpm test --run
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=test
+
+  test-watch:
+    build: .
+    container_name: myapp-test-watch
+    command: pnpm test
+    volumes:
+      - .:/app
+      - /app/node_modules
+    stdin_open: true
+    tty: true
+
+  test-coverage:
+    build: .
+    container_name: myapp-test-coverage
+    command: pnpm test --coverage --run
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ./coverage:/app/coverage
+
+  docs:
+    build: .
+    container_name: myapp-docs
+    command: pnpm run docs:dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - '3000:3000'
+      - '8080:8080'
+    stdin_open: true
+    tty: true
+    environment:
+      - NODE_ENV=development

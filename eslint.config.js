@@ -16,6 +16,7 @@ export default [
       '**/build/**',
       '**/node_modules/**',
       '**/coverage/**',
+      '**/docs/**',
     ],
   },
 

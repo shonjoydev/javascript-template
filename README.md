@@ -24,7 +24,7 @@ git clone https://github.com/shonjoydev/javascript-template.git
 cd <project-name>
 
 # Install dependencies (only pnpm is allowed)
-pnpm install
+pnpm install:pkg
 ```
 
 ## 📦 Available Scripts

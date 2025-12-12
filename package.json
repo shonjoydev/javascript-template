@@ -1,5 +1,5 @@
 {
-  "name": "dsa",
+  "name": "javascript-template",
   "version": "1.0.0",
   "engines": {
     "node": ">=20.11.0 <25.0.0",
@@ -12,6 +12,7 @@
   "type": "module",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "install:pkg": "pnpm install --frozen-lockfile && pnpm prepare",
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
